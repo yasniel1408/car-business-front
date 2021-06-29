@@ -41,7 +41,7 @@ export const ItemAuto = ({ item }) => {
         <Card background="light-1" style={{ cursor: "pointer" }}>
           <CardHeader pad="medium">
             <Image
-              src={`https://car-strapi.herokuapp.com/${item.photo.url}`}
+              src={`https://car-strapi.herokuapp.com${item.photo.url}`}
               width="100%"
               height="200"
               fit="cover"
