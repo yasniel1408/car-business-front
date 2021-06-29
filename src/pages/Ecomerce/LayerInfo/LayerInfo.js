@@ -38,7 +38,7 @@ export const LayerInfo = ({ open, setOpen, modal, setModal, item }) => {
             <Box width="xlarge" flex pad="xsmall" justify="top" direction="row" overflow="auto" wrap >
               <Box width="50%" pad="small">
                 <Image
-                  src={`${item.photo.url}`}
+                  src={`https://car-strapi.herokuapp.com${item.photo.url}`}
                   width="100%"
                   fit="cover"
                   style={{ borderRadius: 6 }}
