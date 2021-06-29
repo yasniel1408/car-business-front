@@ -9,7 +9,7 @@ export const EcomerceProvider = ({ children }) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    getResponse({ url: "/autos", method: "GET" });
+    getResponse({ url: "https://car-strapi.herokuapp.com/autos", method: "GET" });
   },[]);
 
   if (isLoading) return <Loading size="large" />;
