@@ -9,3 +9,5 @@ export const Ecomerce = () => {
     </EcomerceProvider>
   );
 };
+
+export default Ecomerce

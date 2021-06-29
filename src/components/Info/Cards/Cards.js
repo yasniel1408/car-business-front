@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import { Box, Text, Card, Button, Image } from "grommet";
 import { Article, Cart, ScheduleNew } from "grommet-icons";
 import AnimateIn from "react-reveal/Flip";
@@ -23,7 +24,10 @@ export const Cards = () => {
       >
         <AnimateIn left delay={200}>
           <Box align="center" justify="center" pad="small">
-            <Card pad="medium" style={{background: theme.global.colors.background.light}}>
+            <Card
+              pad="medium"
+              style={{ background: theme.global.colors.background.light }}
+            >
               <Box align="center" justify="center" direction="row">
                 <Image src={venta} width="150" height="120" />
                 <Text margin="medium" weight="bold">
@@ -37,14 +41,16 @@ export const Cards = () => {
                 nisi.
               </Text>
               <Box pad="medium" width="100">
-                <Button
-                  primary
-                  secondary
-                  color="accent-2"
-                  style={{ color: "white", height: 40, width: 170 }}
-                  label="Ver Mas..."
-                  icon={<Cart color="white" />}
-                />
+                <NavLink to="/ecomerce">
+                  <Button
+                    primary
+                    secondary
+                    color="accent-2"
+                    style={{ color: "white", height: 40, width: 170 }}
+                    label="Ver Mas..."
+                    icon={<Cart color="white" />}
+                  />
+                </NavLink>
               </Box>
             </Card>
           </Box>
@@ -52,7 +58,10 @@ export const Cards = () => {
 
         <AnimateIn top delay={400}>
           <Box align="center" justify="center" pad="small">
-            <Card pad="medium" style={{background: theme.global.colors.background.light}}>
+            <Card
+              pad="medium"
+              style={{ background: theme.global.colors.background.light }}
+            >
               <Box align="center" justify="center" direction="row">
                 <Image src={alquilerCar} width="150" height="120" />
                 <Text margin="medium" weight="bold">
@@ -81,7 +90,10 @@ export const Cards = () => {
 
         <AnimateIn right delay={600}>
           <Box align="center" justify="center" pad="small">
-            <Card pad="medium" style={{background: theme.global.colors.background.light}}>
+            <Card
+              pad="medium"
+              style={{ background: theme.global.colors.background.light }}
+            >
               <Box align="center" justify="center" direction="row">
                 <Image src={webCar} width="150" height="120" />
                 <Text margin="medium" weight="bold">

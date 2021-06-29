@@ -18,3 +18,5 @@ export const LandingPage = () => {
     </Box>
   );
 };
+
+export default LandingPage

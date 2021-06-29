@@ -7,3 +7,5 @@ export const Dashbaord = () => {
         </div>
     )
 }
+
+export default Dashbaord

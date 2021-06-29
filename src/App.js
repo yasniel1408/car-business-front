@@ -1,45 +1,42 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Grommet } from "grommet";
 import { theme } from "./theme/default";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import { LandingPage } from "./pages/LandingPage/LandingPage";
-import { Login } from "./pages/Login/Login";
-import { Register } from "./pages/Register/Register";
-import { Ecomerce } from "./pages/Ecomerce/Ecomerce";
-import { Dashbaord } from "./pages/Dashbaord/Dashbaord";
-import { NotFound404 } from "./pages/NotFound404/NotFound404";
 import { HeaderLanding } from "./components/HeaderLanding/HeaderLanding";
 import { FooterLanding } from "./components/FooterLanding/FooterLanding";
+import { UserContextProvider } from "./auth/context/UserContextProvider";
+import { PrivateRoute } from "./auth/components/PrivateRoute";
+import { Loading } from "./components/Loading/Loading";
+
+const LandingPage = React.lazy(() => import("./pages/LandingPage/LandingPage"));
+const Login = React.lazy(() => import("./pages/Login/Login"));
+const Register = React.lazy(() => import("./pages/Register/Register"));
+const Ecomerce = React.lazy(() => import("./pages/Ecomerce/Ecomerce"));
+const Dashbaord = React.lazy(() => import("./pages/Dashbaord/Dashbaord"));
+const NotFound404 = React.lazy(() => import("./pages/NotFound404/NotFound404"));
 
 function App() {
   return (
-    <Grommet full theme={theme} style={{ overflowX: "hidden" }}>
-      <Router>
-        <HeaderLanding />
-        <Switch>
-          <Route exact path="/">
-            <LandingPage />
-          </Route>
-          <Route exact path="/login">
-            <Login />
-          </Route>
-          <Route exact path="/register">
-            <Register />
-          </Route>
-          <Route exact path="/ecomerce">
-            <Ecomerce />
-          </Route>
-          <Route exact path="/dashbaord">
-            <Dashbaord />
-          </Route>
-          <Route>
-            <NotFound404 />
-          </Route>
-        </Switch>
-        <FooterLanding />
-      </Router>
-    </Grommet>
+    <UserContextProvider>
+      <Grommet full theme={theme} style={{ overflowX: "hidden" }}>
+        <Router>
+          <HeaderLanding />
+          <Suspense fallback={<Loading />}>
+            <Switch>
+              <Route exact path="/" component={LandingPage} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/register" component={Register} />
+              {/* <PrivateRoute exact path="/ecomerce" component={Ecomerce} /> */}
+              <Route exact path="/ecomerce" component={Ecomerce} />
+              <PrivateRoute exact path="/dashboard" component={Dashbaord} />
+              <Route component={NotFound404} />
+            </Switch>
+          </Suspense>
+          <FooterLanding />
+        </Router>
+      </Grommet>
+    </UserContextProvider>
   );
 }
 
