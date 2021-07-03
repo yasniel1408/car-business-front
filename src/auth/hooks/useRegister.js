@@ -4,19 +4,20 @@ import useAxios from "../../hooks/useAxios";
 export default function useRegister() {
   let { getResponse, error, isLoading, data } = useAxios();
 
-  const login = useCallback(
-    async (data) => {
+  const register = useCallback(
+    async (value) => {
       try {
-        const {
-          data: { jwt, user },
-          status,
-        } = getResponse({ url: "/autos", method: "GET", data });
+        getResponse({
+          url: `${process.env.REACT_APP_API_ENDPOINT}/auth/local/register`,
+          method: "POST",
+          formData: value,
+        });
       } catch (err) {
         console.log(err);
       }
     },
-    [data, error]
+    [getResponse]
   );
 
-  return { login, error, isLoading, data };
+  return { register, error, isLoading, data };
 }

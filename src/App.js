@@ -13,7 +13,6 @@ const LandingPage = React.lazy(() => import("./pages/LandingPage/LandingPage"));
 const Login = React.lazy(() => import("./pages/Login/Login"));
 const Register = React.lazy(() => import("./pages/Register/Register"));
 const Ecomerce = React.lazy(() => import("./pages/Ecomerce/Ecomerce"));
-const Dashbaord = React.lazy(() => import("./pages/Dashbaord/Dashbaord"));
 const NotFound404 = React.lazy(() => import("./pages/NotFound404/NotFound404"));
 
 function App() {
@@ -27,9 +26,7 @@ function App() {
               <Route exact path="/" component={LandingPage} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
-              {/* <PrivateRoute exact path="/ecomerce" component={Ecomerce} /> */}
-              <Route exact path="/ecomerce" component={Ecomerce} />
-              <PrivateRoute exact path="/dashboard" component={Dashbaord} />
+              <PrivateRoute exact path="/ecomerce" component={Ecomerce} />
               <Route component={NotFound404} />
             </Switch>
           </Suspense>
